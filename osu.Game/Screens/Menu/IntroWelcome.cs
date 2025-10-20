@@ -43,14 +43,10 @@ namespace osu.Game.Screens.Menu
         {
             if (MenuVoice.Value)
             {
-                /*-
                 if (api.LocalUser.Value.IsSupporter)
                     AddInternal(skinnableWelcome = new SkinnableSound(new SampleInfo(@"Intro/Welcome/welcome")));
                 else
                     welcome = audio.Samples.Get(@"Intro/Welcome/welcome");
-                */ //go clean up osu!supporter
-
-                AddInternal(skinnableWelcome = new SkinnableSound(new SampleInfo(@"Intro/Welcome/welcome")));
             }
 
             pianoReverb = audio.Samples.Get(@"Intro/Welcome/welcome_piano");

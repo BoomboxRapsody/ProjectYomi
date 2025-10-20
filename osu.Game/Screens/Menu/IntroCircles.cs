@@ -11,6 +11,7 @@ using osu.Framework.Audio.Sample;
 using osu.Framework.Graphics;
 using osu.Framework.Screens;
 using osu.Game.Audio;
+using osu.Game.Online.API;
 using osu.Game.Skinning;
 
 namespace osu.Game.Screens.Menu
@@ -34,18 +35,14 @@ namespace osu.Game.Screens.Menu
         }
 
         [BackgroundDependencyLoader]
-        private void load(AudioManager audio)
+        private void load(AudioManager audio, IAPIProvider api)
         {
             if (MenuVoice.Value)
             {
-                /*-
                 if (api.LocalUser.Value.IsSupporter)
                     AddInternal(skinnableWelcome = new SkinnableSound(new SampleInfo(@"Intro/welcome")));
                 else
                     welcome = audio.Samples.Get(@"Intro/welcome");
-                */ //go clean up osu!supporter
-
-                AddInternal(skinnableWelcome = new SkinnableSound(new SampleInfo(@"Intro/welcome")));
             }
         }
 
