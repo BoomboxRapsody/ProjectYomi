@@ -45,7 +45,7 @@ osu! is designed to allow user-created gameplay variations, called "rulesets". B
 
 You can see some examples of custom rulesets by visiting the [custom ruleset directory](https://github.com/ppy/osu/discussions/13096).
 
-## Developing osu!
+## Developing Project Yomi
 
 ### Prerequisites
 
@@ -60,11 +60,11 @@ When working with the codebase, we recommend using an IDE with intelligent code 
 Clone the repository:
 
 ```shell
-git clone https://github.com/ppy/osu
-cd osu
+git clone https://github.com/BoomboxRapsody/ProjectYomi
+cd ProjectYomi
 ```
 
-To update the source code to the latest commit, run the following command inside the `osu` directory:
+To update the source code to the latest commit, run the following command inside the `ProjectYomi` directory:
 
 ```shell
 git pull
@@ -86,7 +86,7 @@ To build for mobile platforms, you will likely need to run `sudo dotnet workload
 
 #### From CLI
 
-You can also build and run *osu!* from the command-line with a single command:
+You can also build and run *Project Yomi* from the command-line with a single command:
 
 ```shell
 dotnet run --project osu.Desktop
@@ -98,7 +98,7 @@ If the build fails, try to restore NuGet packages with `dotnet restore`.
 
 ### Testing with resource/framework modifications
 
-Sometimes it may be necessary to cross-test changes in [osu-resources](https://github.com/ppy/osu-resources) or [osu-framework](https://github.com/ppy/osu-framework). This can be quickly achieved using included commands:
+Sometimes it may be necessary to cross-test changes in [ProjectYomi-resources](https://github.com/BoomboxRapsody/ProjectYomi-resources) or [ProjectYomi-framework](https://github.com/BoomboxRapsody/ProjectYomi-framework). This can be quickly achieved using included commands:
 
 Windows:
 
@@ -117,9 +117,9 @@ UseLocalResources.sh
 Note that these commands assume you have the relevant project(s) checked out in adjacent directories:
 
 ```
-|- osu            // this repository
-|- osu-framework
-|- osu-resources
+|- ProjectYomi            // this repository
+|- ProjectYomi-framework
+|- ProjectYomi-resources
 ```
 
 ### Code analysis
