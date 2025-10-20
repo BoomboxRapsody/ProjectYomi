@@ -14,10 +14,10 @@ namespace osu.Game.Rulesets.Mods
     public abstract class ModAutoplay : Mod, ICreateReplayData
     {
         public override string Name => "Autoplay";
+        public override LocalisableString Description => new TranslatableString((@"osu.Game.Resources.Localisation.RulesetMods:ModAutoplay_description"), @"Watch a perfect automated play through the song.");
         public override string Acronym => "AT";
         public override IconUsage? Icon => OsuIcon.ModAutoplay;
         public override ModType Type => ModType.Automation;
-        public override LocalisableString Description => "Watch a perfect automated play through the song.";
         public override double ScoreMultiplier => 1;
 
         public sealed override bool UserPlayable => false;

@@ -6,6 +6,7 @@
 using osu.Framework.Allocation;
 using osu.Framework.Bindables;
 using osu.Framework.Graphics;
+using osu.Framework.Localisation;
 using osu.Game.Configuration;
 using osu.Game.Localisation;
 using osu.Game.Scoring;
@@ -19,7 +20,7 @@ namespace osu.Game.Screens.Play.PlayerSettings
         private readonly PlayerCheckbox beatmapHitsoundsToggle;
 
         public AudioSettings()
-            : base("Audio Settings")
+            : base(new TranslatableString((@"osu.Game.Resources.Localisation.ProjectYomi:AudioSettings"), @"Audio Settings"))
         {
             Children = new Drawable[]
             {

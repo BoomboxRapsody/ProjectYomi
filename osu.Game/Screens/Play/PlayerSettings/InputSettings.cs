@@ -4,6 +4,7 @@
 using osu.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Localisation;
 using osu.Game.Configuration;
 using osu.Game.Localisation;
 
@@ -12,7 +13,7 @@ namespace osu.Game.Screens.Play.PlayerSettings
     public partial class InputSettings : PlayerSettingsGroup
     {
         public InputSettings()
-            : base("Input Settings")
+            : base(new TranslatableString((@"osu.Game.Resources.Localisation.ProjectYomi:InputSettings"), @"Input Settings"))
         {
         }
 

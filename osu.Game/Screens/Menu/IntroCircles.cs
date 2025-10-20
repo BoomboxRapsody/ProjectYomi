@@ -8,8 +8,10 @@ using JetBrains.Annotations;
 using osu.Framework.Allocation;
 using osu.Framework.Audio;
 using osu.Framework.Audio.Sample;
-using osu.Framework.Screens;
 using osu.Framework.Graphics;
+using osu.Framework.Screens;
+using osu.Game.Audio;
+using osu.Game.Skinning;
 
 namespace osu.Game.Screens.Menu
 {
@@ -23,6 +25,7 @@ namespace osu.Game.Screens.Menu
 
         private const double delay_for_menu = 2900;
 
+        private SkinnableSound skinnableWelcome;
         private Sample welcome;
 
         public IntroCircles([CanBeNull] Func<MainMenu> createNextScreen = null)
@@ -34,7 +37,16 @@ namespace osu.Game.Screens.Menu
         private void load(AudioManager audio)
         {
             if (MenuVoice.Value)
-                welcome = audio.Samples.Get(@"Intro/welcome");
+            {
+                /*-
+                if (api.LocalUser.Value.IsSupporter)
+                    AddInternal(skinnableWelcome = new SkinnableSound(new SampleInfo(@"Intro/welcome")));
+                else
+                    welcome = audio.Samples.Get(@"Intro/welcome");
+                */ //go clean up osu!supporter
+
+                AddInternal(skinnableWelcome = new SkinnableSound(new SampleInfo(@"Intro/welcome")));
+            }
         }
 
         protected override void LogoArriving(OsuLogo logo, bool resuming)
@@ -43,7 +55,10 @@ namespace osu.Game.Screens.Menu
 
             if (!resuming)
             {
-                welcome?.Play();
+                if (skinnableWelcome != null)
+                    skinnableWelcome.Play();
+                else
+                    welcome?.Play();
 
                 Scheduler.AddDelayed(delegate
                 {

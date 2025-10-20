@@ -6,16 +6,19 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Allocation;
 using osu.Framework.Configuration;
 using osu.Framework.Configuration.Tracking;
 using osu.Framework.Development;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
+using osu.Framework.Graphics.Effects;
 using osu.Framework.Graphics.Transforms;
 using osu.Framework.Threading;
 using osu.Game.Overlays.OSD;
 using osuTK;
+using osuTK.Graphics;
 
 namespace osu.Game.Overlays
 {
@@ -43,9 +46,15 @@ namespace osu.Game.Overlays
                     Position = new Vector2(0.5f, 0.75f),
                     Masking = true,
                     AutoSizeAxes = Axes.X,
-                    Height = height_contracted,
+                    Height = height,
                     Alpha = 0,
                     CornerRadius = 20,
+                    EdgeEffect = new EdgeEffectParameters
+                    {
+                        Colour = Color4.Black.Opacity(0.25f),
+                        Type = EdgeEffectType.Shadow,
+                        Radius = 16,
+                    },
                 },
             };
         }
@@ -105,21 +114,30 @@ namespace osu.Game.Overlays
             // avoid starting a new fade-in if one is already active.
             if (fadeIn == null)
             {
+                /*
                 fadeIn = toDisplay.Animate(
                     b => b.FadeIn(500, Easing.OutQuint),
                     b => b.ResizeHeightTo(height, 500, Easing.OutQuint)
                 );
+                */
+                fadeIn = toDisplay.Animate(b => b.FadeIn(250, Easing.OutQuint));
 
                 fadeIn.Finally(_ => fadeIn = null);
             }
 
             fadeOut?.Cancel();
+            /*
             fadeOut = Scheduler.AddDelayed(() =>
             {
                 toDisplay.Animate(
                     b => b.FadeOutFromOne(1500, Easing.InQuint),
                     b => b.ResizeHeightTo(height_contracted, 1500, Easing.InQuint));
             }, 500);
+            */
+            fadeOut = Scheduler.AddDelayed(() =>
+            {
+                toDisplay.Animate(b => b.FadeOutFromOne(250, Easing.InQuint));
+            }, 1500);
         }
     }
 }

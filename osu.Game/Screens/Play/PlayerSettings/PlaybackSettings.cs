@@ -6,6 +6,7 @@ using osu.Framework.Bindables;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
+using osu.Framework.Localisation;
 using osu.Game.Graphics;
 using osu.Game.Graphics.Sprites;
 using osu.Game.Graphics.UserInterface;
@@ -41,7 +42,7 @@ namespace osu.Game.Screens.Play.PlayerSettings
         private IconButton pausePlay = null!;
 
         public PlaybackSettings()
-            : base("playback")
+            : base(new TranslatableString((@"osu.Game.Resources.Localisation.ProjectYomi:PlaybackSettings"), @"playback"))
         {
         }
 
@@ -138,7 +139,7 @@ namespace osu.Game.Screens.Play.PlayerSettings
                             {
                                 rateSlider = new PlayerSliderBar<double>
                                 {
-                                    LabelText = "Playback speed",
+                                    LabelText = new TranslatableString((@"osu.Game.Resources.Localisation.ProjectYomi:PlaybackSettings_PlaybackRate"), @"Playback speed"),
                                     Current = UserPlaybackRate,
                                 },
                                 multiplierText = new OsuSpriteText

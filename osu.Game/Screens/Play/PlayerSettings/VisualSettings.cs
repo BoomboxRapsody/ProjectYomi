@@ -3,6 +3,7 @@
 
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Localisation;
 using osu.Game.Configuration;
 using osu.Game.Localisation;
 
@@ -18,7 +19,7 @@ namespace osu.Game.Screens.Play.PlayerSettings
         private readonly PlayerCheckbox beatmapColorsToggle;
 
         public VisualSettings()
-            : base("Visual Settings")
+            : base(new TranslatableString((@"osu.Game.Resources.Localisation.ProjectYomi:VisualSettings"), @"Visual Settings"))
         {
             Children = new Drawable[]
             {

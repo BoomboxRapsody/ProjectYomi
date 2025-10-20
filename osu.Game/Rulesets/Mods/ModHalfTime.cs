@@ -15,10 +15,10 @@ namespace osu.Game.Rulesets.Mods
     public abstract class ModHalfTime : ModRateAdjust
     {
         public override string Name => "Half Time";
+        public override LocalisableString Description => new TranslatableString((@"osu.Game.Resources.Localisation.RulesetMods:ModHalfTime_description"), @"Less zoom...");
         public override string Acronym => "HT";
         public override IconUsage? Icon => OsuIcon.ModHalfTime;
         public override ModType Type => ModType.DifficultyReduction;
-        public override LocalisableString Description => "Less zoom...";
         public override bool Ranked => SpeedChange.IsDefault;
 
         [SettingSource("Speed decrease", "The actual decrease to apply", SettingControlType = typeof(MultiplierSettingsSlider))]

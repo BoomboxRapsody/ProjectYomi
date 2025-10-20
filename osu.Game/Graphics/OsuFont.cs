@@ -23,12 +23,12 @@ namespace osu.Game.Graphics
             /// <summary>
             /// Equivalent to Torus with 32px size and semi-bold weight.
             /// </summary>
-            public static FontUsage Title => GetFont(Typeface.TorusAlternate, size: 32, weight: FontWeight.Regular);
+            public static FontUsage Title => GetFont(Typeface.Cafe24Syongsyong, size: 32, weight: FontWeight.Bold);
 
             /// <summary>
             /// Torus with 28px size and semi-bold weight.
             /// </summary>
-            public static FontUsage Subtitle => GetFont(size: 28, weight: FontWeight.Regular);
+            public static FontUsage Subtitle => GetFont(size: 28, weight: FontWeight.Bold);
 
             /// <summary>
             /// Torus with 22px size and bold weight.
@@ -38,7 +38,7 @@ namespace osu.Game.Graphics
             /// <summary>
             /// Torus with 18px size and semi-bold weight.
             /// </summary>
-            public static FontUsage Heading2 => GetFont(size: 18, weight: FontWeight.SemiBold);
+            public static FontUsage Heading2 => GetFont(size: 18, weight: FontWeight.Bold);
 
             /// <summary>
             /// Torus with 16px size and regular weight.
@@ -59,24 +59,24 @@ namespace osu.Game.Graphics
         /// <summary>
         /// The default font.
         /// </summary>
-        public static FontUsage Default => GetFont(weight: FontWeight.Medium);
+        public static FontUsage Default => GetFont(weight: FontWeight.Regular);
 
         /// <summary>
         /// Font face for numeric display.
         /// </summary>
-        public static FontUsage Numeric => GetFont(Typeface.Venera, weight: FontWeight.Bold);
+        public static FontUsage Numeric => GetFont(Typeface.Hungeul, weight: FontWeight.Regular);
 
         /// <summary>
         /// Default font face for UI and game elements.
         /// </summary>
-        public static FontUsage Torus => GetFont(Typeface.Torus, weight: FontWeight.Regular);
+        public static FontUsage Torus => GetFont(Typeface.Cafe24Syongsyong, weight: FontWeight.Regular);
 
         /// <summary>
         /// Default font face with alternate character set for headings and flair text.
         /// </summary>
-        public static FontUsage TorusAlternate => GetFont(Typeface.TorusAlternate, weight: FontWeight.Regular);
+        public static FontUsage TorusAlternate => GetFont(Typeface.Cafe24Syongsyong, weight: FontWeight.Regular);
 
-        public static FontUsage Inter => GetFont(Typeface.Inter, weight: FontWeight.Regular);
+        public static FontUsage Inter => GetFont(Typeface.Cafe24Syongsyong, weight: FontWeight.Regular);
 
         /// <summary>
         /// Retrieves a <see cref="FontUsage"/>.
@@ -87,7 +87,7 @@ namespace osu.Game.Graphics
         /// <param name="italics">Whether the font is italic.</param>
         /// <param name="fixedWidth">Whether all characters should be spaced the same distance apart.</param>
         /// <returns>The <see cref="FontUsage"/>.</returns>
-        public static FontUsage GetFont(Typeface typeface = Typeface.Torus, float size = DEFAULT_FONT_SIZE, FontWeight weight = FontWeight.Medium, bool italics = false, bool fixedWidth = false)
+        public static FontUsage GetFont(Typeface typeface = Typeface.Cafe24Syongsyong, float size = DEFAULT_FONT_SIZE, FontWeight weight = FontWeight.Regular, bool italics = false, bool fixedWidth = false)
         {
             string familyString = GetFamilyString(typeface);
             return new FontUsage(familyString, size, GetWeightString(familyString, weight), getItalics(italics), fixedWidth);
@@ -120,6 +120,12 @@ namespace osu.Game.Graphics
 
                 case Typeface.Inter:
                     return @"Inter";
+
+                case Typeface.Hungeul:
+                    return @"Hungeul";
+
+                case Typeface.Cafe24Syongsyong:
+                    return @"Cafe24Syongsyong";
             }
 
             return null;
@@ -167,6 +173,9 @@ namespace osu.Game.Graphics
         Venera,
         Torus,
 
+        Hungeul,
+        Cafe24Syongsyong,
+
         [Description("Torus (alternate)")]
         TorusAlternate,
         Inter,
@@ -177,7 +186,7 @@ namespace osu.Game.Graphics
         /// <summary>
         /// Equivalent to weight 300.
         /// </summary>
-        Light = 300,
+        Light = 400,
 
         /// <summary>
         /// Equivalent to weight 400.
@@ -187,12 +196,12 @@ namespace osu.Game.Graphics
         /// <summary>
         /// Equivalent to weight 500.
         /// </summary>
-        Medium = 500,
+        Medium = 400,
 
         /// <summary>
         /// Equivalent to weight 600.
         /// </summary>
-        SemiBold = 600,
+        SemiBold = 400,
 
         /// <summary>
         /// Equivalent to weight 700.
@@ -202,6 +211,6 @@ namespace osu.Game.Graphics
         /// <summary>
         /// Equivalent to weight 900.
         /// </summary>
-        Black = 900
+        Black = 700
     }
 }

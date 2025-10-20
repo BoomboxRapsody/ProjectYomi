@@ -18,7 +18,7 @@ namespace osu.Game.Rulesets.Mods
         public override IconUsage? Icon => OsuIcon.ModPerfect;
         public override ModType Type => ModType.DifficultyIncrease;
         public override double ScoreMultiplier => 1;
-        public override LocalisableString Description => "SS or quit.";
+        public override LocalisableString Description => new TranslatableString((@"osu.Game.Resources.Localisation.RulesetMods:ModPerfect_description"), @"SS or quit.");
         public override bool Ranked => true;
         public override bool ValidForFreestyleAsRequiredMod => true;
 

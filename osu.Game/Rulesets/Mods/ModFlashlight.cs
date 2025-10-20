@@ -31,10 +31,10 @@ namespace osu.Game.Rulesets.Mods
     public abstract class ModFlashlight : Mod
     {
         public override string Name => "Flashlight";
+        public override LocalisableString Description => new TranslatableString((@"osu.Game.Resources.Localisation.RulesetMods:ModFlashlight_description"), @"Restricted view area.");
         public override string Acronym => "FL";
         public override IconUsage? Icon => OsuIcon.ModFlashlight;
         public override ModType Type => ModType.DifficultyIncrease;
-        public override LocalisableString Description => "Restricted view area.";
         public override bool Ranked => UsesDefaultConfiguration;
 
         [SettingSource("Flashlight size", "Multiplier applied to the default flashlight size.")]

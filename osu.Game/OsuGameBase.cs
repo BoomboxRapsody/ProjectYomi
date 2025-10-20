@@ -76,9 +76,9 @@ namespace osu.Game
     public partial class OsuGameBase : Framework.Game, ICanAcceptFiles, IBeatSyncProvider
     {
 #if DEBUG
-        public const string GAME_NAME = "osu! (development)";
+        public const string GAME_NAME = "Project Yomi (development)";
 #else
-        public const string GAME_NAME = "osu!";
+        public const string GAME_NAME = "Project Yomi";
 #endif
 
         public const string OSU_PROTOCOL = "osu://";
@@ -467,6 +467,11 @@ namespace osu.Game
 
         protected virtual void InitialiseFonts()
         {
+            AddFont(Resources, @"Fonts/Cafe24Syongsyong/Cafe24Syongsyong-Regular");
+            AddFont(Resources, @"Fonts/Cafe24Syongsyong/Cafe24Syongsyong-Bold");
+            AddFont(Resources, @"Fonts/Hungeul/Hungeul");
+
+            /*
             AddFont(Resources, @"Fonts/Torus/Torus-Regular");
             AddFont(Resources, @"Fonts/Torus/Torus-Light");
             AddFont(Resources, @"Fonts/Torus/Torus-SemiBold");
@@ -485,6 +490,7 @@ namespace osu.Game
             AddFont(Resources, @"Fonts/Inter/Inter-SemiBoldItalic");
             AddFont(Resources, @"Fonts/Inter/Inter-Bold");
             AddFont(Resources, @"Fonts/Inter/Inter-BoldItalic");
+            */
 
             AddFont(Resources, @"Fonts/Noto/Noto-Basic");
             AddFont(Resources, @"Fonts/Noto/Noto-Bopomofo");
@@ -492,10 +498,12 @@ namespace osu.Game
             AddFont(Resources, @"Fonts/Noto/Noto-CJK-Compatibility");
             AddFont(Resources, @"Fonts/Noto/Noto-Hangul");
             AddFont(Resources, @"Fonts/Noto/Noto-Thai");
+            /*
 
             AddFont(Resources, @"Fonts/Venera/Venera-Light");
             AddFont(Resources, @"Fonts/Venera/Venera-Bold");
             AddFont(Resources, @"Fonts/Venera/Venera-Black");
+            */
 
             Fonts.AddStore(new OsuIcon.OsuIconStore(Textures));
         }

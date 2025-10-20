@@ -16,10 +16,12 @@ using osu.Framework.Logging;
 using osu.Framework.Screens;
 using osu.Framework.Timing;
 using osu.Framework.Utils;
+using osu.Game.Audio;
 using osu.Game.Graphics;
 using osu.Game.Graphics.Containers;
 using osu.Game.Graphics.Sprites;
 using osu.Game.Rulesets;
+using osu.Game.Skinning;
 using osuTK;
 using osuTK.Graphics;
 
@@ -34,6 +36,7 @@ namespace osu.Game.Screens.Menu
         [Resolved]
         private AudioManager audio { get; set; }
 
+        private SkinnableSound skinnableWelcome;
         private Sample welcome;
 
         private TrianglesIntroSequence intro;
@@ -47,7 +50,16 @@ namespace osu.Game.Screens.Menu
         private void load()
         {
             if (MenuVoice.Value)
-                welcome = audio.Samples.Get(@"Intro/welcome");
+            {
+                /*-
+                if (api.LocalUser.Value.IsSupporter)
+                    AddInternal(skinnableWelcome = new SkinnableSound(new SampleInfo(@"Intro/welcome")));
+                else
+                    welcome = audio.Samples.Get(@"Intro/welcome");
+                */ //go clean up osu!supporter
+
+                AddInternal(skinnableWelcome = new SkinnableSound(new SampleInfo(@"Intro/welcome")));
+            }
         }
 
         protected override void LogoArriving(OsuLogo logo, bool resuming)
@@ -80,7 +92,11 @@ namespace osu.Game.Screens.Menu
                     {
                         // If the user has requested no theme, fallback to the same intro voice and delay as IntroCircles.
                         // The triangles intro voice and theme are combined which makes it impossible to use.
-                        welcome?.Play();
+                        if (skinnableWelcome != null)
+                            skinnableWelcome.Play();
+                        else
+                            welcome?.Play();
+
                         Scheduler.AddDelayed(StartTrack, IntroCircles.TRACK_START_DELAY);
                     }
                     else

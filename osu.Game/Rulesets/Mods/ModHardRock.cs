@@ -12,10 +12,10 @@ namespace osu.Game.Rulesets.Mods
     public abstract class ModHardRock : Mod, IApplicableToDifficulty
     {
         public override string Name => "Hard Rock";
+        public override LocalisableString Description => new TranslatableString((@"osu.Game.Resources.Localisation.RulesetMods:ModHardRock_description"), @"Everything just got a bit harder...");
         public override string Acronym => "HR";
         public override IconUsage? Icon => OsuIcon.ModHardRock;
         public override ModType Type => ModType.DifficultyIncrease;
-        public override LocalisableString Description => "Everything just got a bit harder...";
         public override Type[] IncompatibleMods => new[] { typeof(ModEasy), typeof(ModDifficultyAdjust) };
         public override bool Ranked => UsesDefaultConfiguration;
         public override bool ValidForFreestyleAsRequiredMod => true;

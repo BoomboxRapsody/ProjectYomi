@@ -15,10 +15,10 @@ namespace osu.Game.Rulesets.Mods
     public abstract class ModDoubleTime : ModRateAdjust
     {
         public override string Name => "Double Time";
+        public override LocalisableString Description => new TranslatableString((@"osu.Game.Resources.Localisation.RulesetMods:ModDoubleTime_description"), @"Zoooooooooom...");
         public override string Acronym => "DT";
         public override IconUsage? Icon => OsuIcon.ModDoubleTime;
         public override ModType Type => ModType.DifficultyIncrease;
-        public override LocalisableString Description => "Zoooooooooom...";
         public override bool Ranked => SpeedChange.IsDefault;
 
         [SettingSource("Speed increase", "The actual increase to apply", SettingControlType = typeof(MultiplierSettingsSlider))]

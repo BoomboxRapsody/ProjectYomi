@@ -30,7 +30,7 @@ namespace osu.Game.Screens.Menu
         [BackgroundDependencyLoader]
         private void load(INotificationOverlay notifications)
         {
-            HeaderText = "Are you sure you want to exit osu!?";
+            HeaderText = "Are you sure you want to exit Project Yomi?";
 
             Icon = FontAwesome.Solid.ExclamationTriangle;
 

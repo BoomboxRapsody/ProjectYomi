@@ -24,10 +24,10 @@ namespace osu.Game.Rulesets.Mods
     public abstract class ModNightcore : ModRateAdjust
     {
         public override string Name => "Nightcore";
+        public override LocalisableString Description => new TranslatableString((@"osu.Game.Resources.Localisation.RulesetMods:ModNightcore_description"), @"Uguuuuuuuu...");
         public override string Acronym => "NC";
         public override IconUsage? Icon => OsuIcon.ModNightcore;
         public override ModType Type => ModType.DifficultyIncrease;
-        public override LocalisableString Description => "Uguuuuuuuu...";
         public override bool Ranked => UsesDefaultConfiguration;
 
         [SettingSource("Speed increase", "The actual increase to apply", SettingControlType = typeof(MultiplierSettingsSlider))]
