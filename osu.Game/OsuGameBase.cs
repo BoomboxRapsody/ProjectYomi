@@ -469,7 +469,7 @@ namespace osu.Game
         {
             AddFont(Resources, @"Fonts/Cafe24Syongsyong/Cafe24Syongsyong-Regular");
             AddFont(Resources, @"Fonts/Cafe24Syongsyong/Cafe24Syongsyong-Bold");
-            AddFont(Resources, @"Fonts/Hungeul/Hungeul");
+            AddFont(Resources, @"Fonts/Hungeul/Hungeul-Regular");
 
             /*
             AddFont(Resources, @"Fonts/Torus/Torus-Regular");
