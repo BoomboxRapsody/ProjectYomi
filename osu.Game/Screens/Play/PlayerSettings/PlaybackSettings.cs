@@ -139,7 +139,7 @@ namespace osu.Game.Screens.Play.PlayerSettings
                             {
                                 rateSlider = new PlayerSliderBar<double>
                                 {
-                                    LabelText = new TranslatableString((@"osu.Game.Resources.Localisation.ProjectYomi:PlaybackSettings_PlaybackRate"), @"Playback speed"),
+                                    LabelText = new TranslatableString((@"osu.Game.Resources.Localisation.FrameworkLocalisation.ProjectYomiFramework:PlaybackSettings_PlaybackRate"), @"Playback speed"),
                                     Current = UserPlaybackRate,
                                 },
                                 multiplierText = new OsuSpriteText
