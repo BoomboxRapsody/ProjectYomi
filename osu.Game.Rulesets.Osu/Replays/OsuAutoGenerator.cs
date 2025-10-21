@@ -40,7 +40,7 @@ namespace osu.Game.Rulesets.Osu.Replays
         /// <summary>
         /// What easing to use when moving between hitobjects
         /// </summary>
-        private Easing preferredEasing => DelayedMovements ? Easing.InOutCubic : Easing.OutCubic;
+        private Easing preferredEasing => DelayedMovements ? Easing.InOutCubic : Easing.OutElastic;
 
         #endregion
 
