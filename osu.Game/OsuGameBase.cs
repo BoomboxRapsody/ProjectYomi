@@ -1,4 +1,4 @@
-// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the MIT Licence.
+﻿// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the MIT Licence.
 // See the LICENCE file in the repository root for full licence text.
 
 #nullable disable
@@ -459,6 +459,48 @@ namespace osu.Game
                     textWriter.WriteLine();
                     textWriter.WriteLine(@"For more information on how these files are organised,");
                     textWriter.WriteLine(@"see https://github.com/ppy/osu/wiki/User-file-storage");
+                }
+            }
+
+            const string filenameKorean = "IMPORTANT READ ME (Korean).txt";
+
+            if (!Storage.Exists(filenameKorean))
+            {
+                using (var stream = Storage.CreateFileSafely(filenameKorean))
+                using (var textWriter = new StreamWriter(stream))
+                {
+                    textWriter.WriteLine(@"이 폴더에는 모든 사용자 파일과 구성이 포함되어 있습니다.");
+                    textWriter.WriteLine(@"이 폴더를 수동으로 변경하지 말아 주세요.");
+                    textWriter.WriteLine();
+                    textWriter.WriteLine(@"- 게임 파일을 백업하려면 이 디렉토리 전체를 백업하세요.");
+                    textWriter.WriteLine(@"- 모든 게임 파일을 삭제하려면 이 디렉토리 전체를 삭제하세요.");
+                    textWriter.WriteLine();
+                    textWriter.WriteLine(@"분명히 말하자면, 이 디렉토리 안에 있는 ""files/"" 디렉토리는 비트맵, 스킨, 리플레이의 모든 원본 조각을 저장합니다.");
+                    textWriter.WriteLine(@"중요한 것은 데이터 손실을 방지하기 위해 백업이 필요한 디렉터리만 있는 것은 아니라는 점입니다. ""files/"" 디렉터리만 복사하면 데이터가 손실됩니다.");
+                    textWriter.WriteLine();
+                    textWriter.WriteLine(@"이 파일들이 어떻게 구성되어 있는지에 대한 더 많은 정보를 원하시면,");
+                    textWriter.WriteLine(@"https://github.com/ppy/osu/wiki/User-file-storage을 참조하세요.");
+                }
+            }
+
+            const string filenameJapanese = "IMPORTANT READ ME (Japanese).txt";
+
+            if (!Storage.Exists(filenameJapanese))
+            {
+                using (var stream = Storage.CreateFileSafely(filenameJapanese))
+                using (var textWriter = new StreamWriter(stream))
+                {
+                    textWriter.WriteLine(@"このフォルダには、すべてのユーザーファイルと構成が含まれています。");
+                    textWriter.WriteLine(@"このフォルダを手動で変更しないでください。");
+                    textWriter.WriteLine();
+                    textWriter.WriteLine(@"- ゲームファイルをバックアップしたい場合は、このディレクトリ全体をバックアップします。");
+                    textWriter.WriteLine(@"- すべてのゲームファイルを削除する場合は、このディレクトリ全体を削除します。");
+                    textWriter.WriteLine();
+                    textWriter.WriteLine(@"明確にするために、このディレクトリ内の ""files/"" ディレクトリには、ビートマップ、スキン、およびリプレイのすべての未加工の部分が格納されます。");
+                    textWriter.WriteLine(@"重要なことは、データの損失を防ぐためにバックアップが必要なディレクトリは、このディレクトリだけではないということです。 ""files/""ディレクトリだけをコピーすると、データが失われます。");
+                    textWriter.WriteLine();
+                    textWriter.WriteLine(@"これらのファイルがどのように構成されているかについては、");
+                    textWriter.WriteLine(@"参照: https://github.com/ppy/osu/wiki/User-file-storage");
                 }
             }
         }
