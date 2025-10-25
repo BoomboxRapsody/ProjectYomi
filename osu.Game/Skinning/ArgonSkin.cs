@@ -181,7 +181,9 @@ namespace osu.Game.Skinning
                                     }
 
                                     foreach (var wedgePiece in wedgePieces)
+                                    {
                                         wedgePiece.Position += new Vector2(-50, 15);
+                                    }
 
                                     if (score != null)
                                     {
