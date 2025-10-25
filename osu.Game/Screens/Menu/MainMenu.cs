@@ -120,9 +120,23 @@ namespace osu.Game.Screens.Menu
         [CanBeNull]
         private IDisposable logoProxy;
 
+        private Bindable<bool> ApplyModTrackAdjustmentsBindable;
+
         [BackgroundDependencyLoader(true)]
-        private void load(BeatmapListingOverlay beatmapListing, SettingsOverlay settings, OsuConfigManager config, SessionStatics statics, AudioManager audio)
+        private void load(BeatmapListingOverlay beatmapListing, SettingsOverlay settings, OsuGame? game, OsuConfigManager config, SessionStatics statics, AudioManager audio)
         {
+            ApplyModTrackAdjustmentsBindable = config.GetBindable<bool>(OsuSetting.ApplyModTrackAdjustments);
+            ApplyModTrackAdjustmentsBindable.BindValueChanged(r =>
+            {
+                if (game?.RestartAppWhenExited() == true)
+                {
+                    game.AttemptExit();
+                }
+                else
+                {
+                    dialogOverlay?.Push(new ConfirmDialog(UserInterfaceStrings.ApplyModTrackAdjustments, () => game?.AttemptExit()));
+                }
+            });
             holdDelay = config.GetBindable<double>(OsuSetting.UIHoldActivationDelay);
             loginDisplayed = statics.GetBindable<bool>(Static.LoginOverlayDisplayed);
             showMobileDisclaimer = config.GetBindable<bool>(OsuSetting.ShowMobileDisclaimer);

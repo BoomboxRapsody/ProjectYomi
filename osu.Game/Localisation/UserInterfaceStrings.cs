@@ -52,12 +52,14 @@ namespace osu.Game.Localisation
         /// <summary>
         /// "osu! music theme"
         /// </summary>
-        public static LocalisableString OsuMusicTheme => new TranslatableString(getKey(@"osu_music_theme"), @"osu! music theme");
+        public static LocalisableString OsuMusicTheme => new TranslatableString(getKey(@"osu_music_theme"), @"Project Yomi music theme");
 
         /// <summary>
         /// "Intro sequence"
         /// </summary>
         public static LocalisableString IntroSequence => new TranslatableString(getKey(@"intro_sequence"), @"Intro sequence");
+
+        public static LocalisableString ApplyModTrackAdjustments => new TranslatableString(getKey(@"ApplyModTrackAdjustments"), @"Apply mod track adjustments to main menu");
 
         /// <summary>
         /// "Background source"

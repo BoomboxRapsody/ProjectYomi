@@ -52,7 +52,7 @@ namespace osu.Game.Localisation
         /// <summary>
         /// "Open osu! folder"
         /// </summary>
-        public static LocalisableString OpenOsuFolder => new TranslatableString(getKey(@"open_osu_folder"), @"Open osu! folder");
+        public static LocalisableString OpenOsuFolder => new TranslatableString(getKey(@"open_osu_folder"), @"Open Project Yomi folder");
 
         /// <summary>
         /// "Export logs"
@@ -72,7 +72,7 @@ namespace osu.Game.Localisation
         /// <summary>
         /// "Learn more about lazer"
         /// </summary>
-        public static LocalisableString LearnMoreAboutLazer => new TranslatableString(getKey(@"learn_more_about_lazer"), @"Learn more about lazer");
+        public static LocalisableString LearnMoreAboutLazer => new TranslatableString(getKey(@"learn_more_about_lazer"), @"Learn more about osu!lazer");
 
         /// <summary>
         /// "Check out the feature comparison and FAQ"

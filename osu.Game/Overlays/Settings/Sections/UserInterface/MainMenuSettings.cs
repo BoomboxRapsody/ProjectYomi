@@ -51,6 +51,11 @@ namespace osu.Game.Overlays.Settings.Sections.UserInterface
                     LabelText = UserInterfaceStrings.IntroSequence,
                     Current = config.GetBindable<IntroSequence>(OsuSetting.IntroSequence),
                 },
+                new SettingsCheckbox
+                {
+                    LabelText = UserInterfaceStrings.ApplyModTrackAdjustments,
+                    Current = config.GetBindable<bool>(OsuSetting.ApplyModTrackAdjustments)
+                },
                 backgroundSourceDropdown = new SettingsEnumDropdown<BackgroundSource>
                 {
                     LabelText = UserInterfaceStrings.BackgroundSource,

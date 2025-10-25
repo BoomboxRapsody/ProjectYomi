@@ -364,6 +364,7 @@ namespace osu.Game.Configuration
         AlwaysPlayFirstComboBreak,
         FloatingComments,
         HUDVisibilityMode,
+        ApplyModTrackAdjustments,
 
         ShowHealthDisplayWhenCantFail,
         FadePlayfieldWhenHealthLow,
