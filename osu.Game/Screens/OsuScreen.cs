@@ -99,7 +99,7 @@ namespace osu.Game.Screens
         [Resolved]
         private MusicController musicController { get; set; }
 
-        public virtual bool? ApplyModTrackAdjustments => null;
+        public virtual bool? ApplyModTrackAdjustments { get; set; }
 
         public virtual bool? AllowGlobalTrackControl => null;
 

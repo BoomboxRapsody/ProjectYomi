@@ -85,7 +85,7 @@ namespace osu.Game.Screens.Menu
         [Resolved(canBeNull: true)]
         private IDialogOverlay dialogOverlay { get; set; }
 
-        public override bool? ApplyModTrackAdjustments => true;
+        public override bool? ApplyModTrackAdjustments { get; set; }
 
         // used to stop kiai fountain samples when navigating to other screens
         IBindable<bool> ISamplePlaybackDisabler.SamplePlaybackDisabled => samplePlaybackDisabled;
@@ -128,14 +128,7 @@ namespace osu.Game.Screens.Menu
             ApplyModTrackAdjustmentsBindable = config.GetBindable<bool>(OsuSetting.ApplyModTrackAdjustments);
             ApplyModTrackAdjustmentsBindable.BindValueChanged(r =>
             {
-                if (game?.RestartAppWhenExited() == true)
-                {
-                    game.AttemptExit();
-                }
-                else
-                {
-                    dialogOverlay?.Push(new ConfirmDialog(UserInterfaceStrings.ApplyModTrackAdjustments, () => game?.AttemptExit()));
-                }
+                ApplyModTrackAdjustments = r.NewValue;
             });
             holdDelay = config.GetBindable<double>(OsuSetting.UIHoldActivationDelay);
             loginDisplayed = statics.GetBindable<bool>(Static.LoginOverlayDisplayed);
