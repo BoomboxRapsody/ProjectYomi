@@ -39,6 +39,7 @@ using osu.Game.Screens.Edit;
 using osu.Game.Screens.OnlinePlay.DailyChallenge;
 using osu.Game.Screens.OnlinePlay.Multiplayer;
 using osu.Game.Screens.OnlinePlay.Playlists;
+using osu.Game.Screens.Play;
 using osu.Game.Screens.SelectV2;
 using osu.Game.Seasonal;
 using osuTK;
@@ -129,12 +130,15 @@ namespace osu.Game.Screens.Menu
         }
 
         [BackgroundDependencyLoader(true)]
-        private void load(BeatmapListingOverlay beatmapListing, SettingsOverlay settings, OsuGame? game, OsuConfigManager config, SessionStatics statics, AudioManager audio)
+        private void load(BeatmapListingOverlay beatmapListing, ILocalUserPlayInfo localUserInfo, SettingsOverlay settings, OsuGame? game, OsuConfigManager config, SessionStatics statics, AudioManager audio)
         {
             ApplyModTrackAdjustmentsBindable = config.GetBindable<bool>(OsuSetting.ApplyModTrackAdjustments);
             ApplyModTrackAdjustmentsBindable.BindValueChanged(r =>
             {
-                UpdateApplyModTrackAdjustments();
+                if (localUserInfo.PlayingState.Value == LocalUserPlayingState.NotPlaying)
+                {
+                    UpdateApplyModTrackAdjustments();
+                }
             });
             holdDelay = config.GetBindable<double>(OsuSetting.UIHoldActivationDelay);
             loginDisplayed = statics.GetBindable<bool>(Static.LoginOverlayDisplayed);
