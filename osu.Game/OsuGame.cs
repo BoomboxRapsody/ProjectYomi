@@ -1629,9 +1629,6 @@ namespace osu.Game
         [CanBeNull]
         private IDisposable duckOperation;
 
-        [Resolved]
-        private MusicController musicController { get; set; }
-
         private void updateActiveState(bool isActive)
         {
             if (isActive)
@@ -1642,7 +1639,7 @@ namespace osu.Game
             else
             {
                 this.TransformBindableTo(inactiveVolumeFade, LocalConfig.Get<double>(OsuSetting.VolumeInactive), 4000, Easing.OutQuint);
-                duckOperation = musicController?.Duck(new DuckParameters
+                duckOperation = base.MusicController.Duck(new DuckParameters
                 {
                     DuckVolumeTo = 1,
                     DuckDuration = 4000,
