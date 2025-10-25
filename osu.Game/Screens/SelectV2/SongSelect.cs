@@ -157,9 +157,16 @@ namespace osu.Game.Screens.SelectV2
         private Bindable<bool> configBackgroundBlur = null!;
         private Bindable<bool> showConvertedBeatmaps = null!;
 
+        private Bindable<bool> ShowStoryboard;
+
         [BackgroundDependencyLoader]
         private void load(AudioManager audio, OsuConfigManager config)
         {
+            ShowStoryboard = config.GetBindable<bool>(OsuSetting.ShowStoryboardOnSongSelect);
+            ShowStoryboard.BindValueChanged(r =>
+            {
+                updateBackgroundDim();
+            });
             errorSample = audio.Samples.Get(@"UI/generic-error");
 
             AddRangeInternal(new Drawable[]
@@ -807,6 +814,7 @@ namespace osu.Game.Screens.SelectV2
         {
             backgroundModeBeatmap.Beatmap = Beatmap.Value;
             backgroundModeBeatmap.IgnoreUserSettings.Value = true;
+            backgroundModeBeatmap.StoryboardReplacesBackground.Value = ShowStoryboard.Value;
 
             backgroundModeBeatmap.DimWhenUserSettingsIgnored.Value = 0.1f;
 

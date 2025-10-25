@@ -44,6 +44,12 @@ namespace osu.Game.Overlays.Settings.Sections.UserInterface
                 },
                 new SettingsCheckbox
                 {
+                    LabelText = GraphicsSettingsStrings.StoryboardVideo,
+                    Current = config.GetBindable<bool>(OsuSetting.ShowStoryboardOnSongSelect),
+                    ClassicDefault = false
+                },
+                new SettingsCheckbox
+                {
                     LabelText = GameplaySettingsStrings.BackgroundBlur,
                     Current = config.GetBindable<bool>(OsuSetting.SongSelectBackgroundBlur),
                     ClassicDefault = false,

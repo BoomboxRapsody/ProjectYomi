@@ -68,6 +68,7 @@ namespace osu.Game.Configuration
             SetDefault(OsuSetting.SongSelectBackgroundBlur, false);
 
             SetDefault(OsuSetting.ApplyModTrackAdjustments, false);
+            SetDefault(OsuSetting.ShowStoryboardOnSongSelect, false);
 
             // Online settings
             SetDefault(OsuSetting.Username, string.Empty);
@@ -397,6 +398,7 @@ namespace osu.Game.Configuration
         Username,
         ReleaseStream,
         SavePassword,
+        ShowStoryboardOnSongSelect,
         SaveUsername,
         DisplayStarsMinimum,
         DisplayStarsMaximum,
