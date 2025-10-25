@@ -195,7 +195,7 @@ namespace osu.Game.Screens.Backgrounds
                     return @"Intro/Welcome/menu-background";
 
                 default:
-                    return $@"Menu/New/menu-background-{currentDisplay % background_count + 1}";
+                    return $@"Menu/menu-background-{currentDisplay % background_count + 1}";
             }
         }
     }
