@@ -71,6 +71,7 @@ namespace osu.Game.Overlays
         private readonly BindableDouble audioDuckVolume = new BindableDouble(1);
 
         private AudioFilter audioDuckFilter = null!;
+        private AudioFilter audioSampleDuckFilter = null!;
 
         private readonly Bindable<RandomSelectAlgorithm> randomSelectAlgorithm = new Bindable<RandomSelectAlgorithm>();
 
@@ -81,6 +82,7 @@ namespace osu.Game.Overlays
         private void load(AudioManager audio, OsuConfigManager configManager)
         {
             AddInternal(audioDuckFilter = new AudioFilter(audio.TrackMixer));
+            AddInternal(audioSampleDuckFilter = new AudioFilter(audio.SampleMixer));
             audio.Tracks.AddAdjustment(AdjustableProperty.Volume, audioDuckVolume);
             sampleVolume = audio.VolumeSample.GetBoundCopy();
 
@@ -318,6 +320,40 @@ namespace osu.Game.Overlays
 
                 // If another duck operation is in the list, restore ducking to its level, else reset back to defaults.
                 audioDuckFilter.CutoffTo(restoreLowPassOperation?.DuckCutoffTo ?? AudioFilter.MAX_LOWPASS_CUTOFF, parameters.RestoreDuration, parameters.RestoreEasing);
+                this.TransformBindableTo(audioDuckVolume, restoreVolumeOperation?.DuckVolumeTo ?? 1, parameters.RestoreDuration, parameters.RestoreEasing);
+            });
+        }
+
+        public IDisposable DuckWithSFX(DuckParameters? parameters = null)
+        {
+            // Don't duck if samples have no volume, it sounds weird.
+            if (sampleVolume.Value == 0)
+                return new InvokeOnDisposal(() => { });
+
+            parameters ??= new DuckParameters();
+
+            duckOperations.Add(parameters);
+
+            DuckParameters volumeOperation = duckOperations.MinBy(p => p.DuckVolumeTo)!;
+            DuckParameters lowPassOperation = duckOperations.MinBy(p => p.DuckCutoffTo)!;
+
+            audioDuckFilter.CutoffTo(lowPassOperation.DuckCutoffTo, lowPassOperation.DuckDuration, lowPassOperation.DuckEasing);
+            audioSampleDuckFilter.CutoffTo(lowPassOperation.DuckCutoffTo, lowPassOperation.DuckDuration, lowPassOperation.DuckEasing);
+            this.TransformBindableTo(audioDuckVolume, volumeOperation.DuckVolumeTo, volumeOperation.DuckDuration, volumeOperation.DuckEasing);
+
+            return new InvokeOnDisposal(restoreDucking);
+
+            void restoreDucking() => Schedule(() =>
+            {
+                if (!duckOperations.Remove(parameters))
+                    return;
+
+                DuckParameters? restoreVolumeOperation = duckOperations.MinBy(p => p.DuckVolumeTo);
+                DuckParameters? restoreLowPassOperation = duckOperations.MinBy(p => p.DuckCutoffTo);
+
+                // If another duck operation is in the list, restore ducking to its level, else reset back to defaults.
+                audioDuckFilter.CutoffTo(restoreLowPassOperation?.DuckCutoffTo ?? AudioFilter.MAX_LOWPASS_CUTOFF, parameters.RestoreDuration, parameters.RestoreEasing);
+                audioSampleDuckFilter.CutoffTo(restoreLowPassOperation?.DuckCutoffTo ?? AudioFilter.MAX_LOWPASS_CUTOFF, parameters.RestoreDuration, parameters.RestoreEasing);
                 this.TransformBindableTo(audioDuckVolume, restoreVolumeOperation?.DuckVolumeTo ?? 1, parameters.RestoreDuration, parameters.RestoreEasing);
             });
         }

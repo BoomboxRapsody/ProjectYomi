@@ -1639,7 +1639,7 @@ namespace osu.Game
             else
             {
                 this.TransformBindableTo(inactiveVolumeFade, LocalConfig.Get<double>(OsuSetting.VolumeInactive), 4000, Easing.OutQuint);
-                duckOperation = base.MusicController.Duck(new DuckParameters
+                duckOperation = base.MusicController.DuckWithSFX(new DuckParameters
                 {
                     DuckVolumeTo = 1,
                     DuckDuration = 4000,
