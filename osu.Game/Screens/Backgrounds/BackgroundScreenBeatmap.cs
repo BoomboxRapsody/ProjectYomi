@@ -73,7 +73,7 @@ namespace osu.Game.Screens.Backgrounds
         [BackgroundDependencyLoader]
         private void load()
         {
-            var background = new BeatmapBackgroundWithStoryboard(beatmap);
+            var background = new BeatmapBackground(beatmap);
             LoadComponent(background);
             switchBackground(background);
         }
