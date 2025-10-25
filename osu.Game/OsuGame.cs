@@ -1626,12 +1626,29 @@ namespace osu.Game
 
         private readonly BindableDouble inactiveVolumeFade = new BindableDouble();
 
+        [CanBeNull]
+        private IDisposable duckOperation;
+
+        [Resolved]
+        private MusicController musicController { get; set; }
+
         private void updateActiveState(bool isActive)
         {
             if (isActive)
+            {
                 this.TransformBindableTo(inactiveVolumeFade, 1, 400, Easing.OutQuint);
+                duckOperation?.Dispose();
+            }
             else
+            {
                 this.TransformBindableTo(inactiveVolumeFade, LocalConfig.Get<double>(OsuSetting.VolumeInactive), 4000, Easing.OutQuint);
+                duckOperation = musicController?.Duck(new DuckParameters
+                {
+                    DuckVolumeTo = 1,
+                    DuckDuration = 4000,
+                    RestoreDuration = 400,
+                });
+            }
         }
 
         #endregion
