@@ -66,6 +66,8 @@ namespace osu.Game.Screens.Menu
         private SkinnableSound skinnableSeeya;
         private ISample seeya;
 
+        public override bool? ApplyModTrackAdjustments => true;
+
         protected virtual string SeeyaSampleName => "Intro/seeya";
 
         protected override bool PlayExitSound => false;
