@@ -104,7 +104,7 @@ namespace osu.Game.Screens.Play.HUD
                 iconsContainer.Add(new ModIcon(mod, showExtendedInformation: showExtendedInformation) { Scale = new Vector2(MOD_ICON_SCALE) });
         }
 
-        private void updateExpansionMode(double duration = 250)
+        private void updateExpansionMode(double duration = 125)
         {
             switch (expansionMode)
             {
