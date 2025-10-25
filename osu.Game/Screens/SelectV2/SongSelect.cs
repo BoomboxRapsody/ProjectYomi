@@ -158,9 +158,10 @@ namespace osu.Game.Screens.SelectV2
         private Bindable<bool> showConvertedBeatmaps = null!;
 
         [BackgroundDependencyLoader]
-        private void load(AudioManager audio, OsuConfigManager config)
+        private void load(AudioManager audio, OsuConfigManager config, OsuGame game)
         {
             errorSample = audio.Samples.Get(@"UI/generic-error");
+            game.isSongSelect = true;
 
             AddRangeInternal(new Drawable[]
             {
@@ -732,6 +733,7 @@ namespace osu.Game.Screens.SelectV2
         private void onLeavingScreen()
         {
             restoreBackground();
+            Game.isSongSelect = false;
 
             modSelectOverlay.SelectedMods.UnbindFrom(Mods);
             modSelectOverlay.Beatmap.UnbindFrom(Beatmap);

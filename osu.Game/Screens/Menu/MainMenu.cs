@@ -381,6 +381,8 @@ namespace osu.Game.Screens.Menu
 
             Buttons.State = ButtonSystemState.EnteringMode;
 
+            UpdateApplyModTrackAdjustments();
+
             this.FadeOut(FADE_OUT_DURATION, Easing.InSine);
             buttonsContainer.MoveTo(new Vector2(-800, 0), FADE_OUT_DURATION, Easing.InSine);
 
@@ -399,6 +401,8 @@ namespace osu.Game.Screens.Menu
         public override void OnResuming(ScreenTransitionEvent e)
         {
             base.OnResuming(e);
+
+            UpdateApplyModTrackAdjustments();
 
             // Ensures any playing `ButtonSystem` samples are stopped when returning to MainMenu (as to not overlap with the 'back' sample)
             Buttons.StopSamplePlayback();
