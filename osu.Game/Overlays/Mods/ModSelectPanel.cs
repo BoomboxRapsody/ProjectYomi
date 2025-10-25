@@ -269,16 +269,16 @@ namespace osu.Game.Overlays.Mods
                 transitionDuration *= 4;
             }
 
-            Content.TransformTo(nameof(BorderColour), ColourInfo.GradientVertical(backgroundColour, foregroundColour), transitionDuration, Easing.OutQuint);
-            Background.FadeColour(backgroundColour, transitionDuration, Easing.OutQuint);
-            SwitchContainer.ResizeWidthTo(targetWidth, transitionDuration, Easing.OutQuint);
+            Content.TransformTo(nameof(BorderColour), ColourInfo.GradientVertical(backgroundColour, foregroundColour), transitionDuration, Easing.OutBack);
+            Background.FadeColour(backgroundColour, transitionDuration, Easing.OutBack);
+            SwitchContainer.ResizeWidthTo(targetWidth, transitionDuration, Easing.OutBack);
             MainContentContainer.TransformTo(nameof(Padding), new MarginPadding
             {
                 Left = targetWidth,
                 Right = CORNER_RADIUS
-            }, transitionDuration, Easing.OutQuint);
-            TextBackground.FadeColour(foregroundColour, transitionDuration, Easing.OutQuint);
-            TextFlow.FadeColour(textColour, transitionDuration, Easing.OutQuint);
+            }, transitionDuration, Easing.OutBack);
+            TextBackground.FadeColour(foregroundColour, transitionDuration, Easing.OutBack);
+            TextFlow.FadeColour(textColour, transitionDuration, Easing.OutBack);
         }
 
         #region IFilterable
