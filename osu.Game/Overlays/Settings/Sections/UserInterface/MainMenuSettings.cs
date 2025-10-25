@@ -68,6 +68,7 @@ namespace osu.Game.Overlays.Settings.Sections.UserInterface
         {
             base.LoadComplete();
 
+            /*
             user.BindValueChanged(u =>
             {
                 if (u.NewValue?.IsSupporter != true)
@@ -75,6 +76,8 @@ namespace osu.Game.Overlays.Settings.Sections.UserInterface
                 else
                     backgroundSourceDropdown.ClearNoticeText();
             }, true);
+            */
+            //backgroundSourceDropdown.ClearNoticeText();
         }
     }
 }

@@ -143,6 +143,7 @@ namespace osu.Game.Screens.Backgrounds
             // seasonal background loading gets highest priority.
             Background newBackground = seasonalBackgroundLoader.LoadNextBackground();
 
+            /*
             if (newBackground == null && user.Value?.IsSupporter == true)
             {
                 switch (source.Value)
@@ -175,6 +176,36 @@ namespace osu.Game.Screens.Backgrounds
                         break;
                 }
             }
+            */
+                switch (source.Value)
+                {
+                    case BackgroundSource.Beatmap:
+                    case BackgroundSource.BeatmapWithStoryboard:
+                    {
+                        if (source.Value == BackgroundSource.BeatmapWithStoryboard && AllowStoryboardBackground)
+                            newBackground = new BeatmapBackgroundWithStoryboard(beatmap.Value, getBackgroundTextureName());
+                        newBackground ??= new BeatmapBackground(beatmap.Value, getBackgroundTextureName());
+
+                        break;
+                    }
+
+                    case BackgroundSource.Skin:
+                        switch (skin.Value)
+                        {
+                            case TrianglesSkin:
+                            case ArgonSkin:
+                            case DefaultLegacySkin:
+                            case RetroSkin:
+                                // default skins should use the default background rotation, which won't be the case if a SkinBackground is created for them.
+                                break;
+
+                            default:
+                                newBackground = new SkinBackground(skin.Value, getBackgroundTextureName());
+                                break;
+                        }
+
+                        break;
+                }
 
             // this method is called in many cases where the background might not necessarily need to change.
             // if an equivalent background is currently being shown, we don't want to load it again.
