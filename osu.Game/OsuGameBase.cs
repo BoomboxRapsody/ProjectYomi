@@ -103,6 +103,7 @@ namespace osu.Game
         private const double global_track_volume_adjust = 0.8;
 
         public bool isSongSelect { get; set; }
+        public bool isPlaying { get; set; }
 
         public virtual bool UseDevelopmentServer => DebugUtils.IsDebugBuild;
 

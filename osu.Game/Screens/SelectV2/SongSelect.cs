@@ -161,7 +161,6 @@ namespace osu.Game.Screens.SelectV2
         private void load(AudioManager audio, OsuConfigManager config, OsuGame game)
         {
             errorSample = audio.Samples.Get(@"UI/generic-error");
-            game.isSongSelect = true;
 
             AddRangeInternal(new Drawable[]
             {
@@ -696,6 +695,7 @@ namespace osu.Game.Screens.SelectV2
 
         private void onArrivingAtScreen()
         {
+            Game.isSongSelect = true;
             modSelectOverlay.Beatmap.BindTo(Beatmap);
             // required due to https://github.com/ppy/osu-framework/issues/3218
             modSelectOverlay.SelectedMods.Disabled = false;

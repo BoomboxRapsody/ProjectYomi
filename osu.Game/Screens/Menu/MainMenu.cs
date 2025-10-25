@@ -125,8 +125,14 @@ namespace osu.Game.Screens.Menu
 
         public void UpdateApplyModTrackAdjustments()
         {
-            ApplyModTrackAdjustments = ApplyModTrackAdjustmentsBindable.Value;
-            musicController.ApplyModTrackAdjustments = ApplyModTrackAdjustmentsBindable.Value;
+            if (Game.isSongSelect == false)
+            {
+                if (Game.isPlaying == false)
+                {
+                    ApplyModTrackAdjustments = ApplyModTrackAdjustmentsBindable.Value;
+                    musicController.ApplyModTrackAdjustments = ApplyModTrackAdjustmentsBindable.Value;
+                }
+            }
         }
 
         [BackgroundDependencyLoader(true)]
@@ -135,13 +141,7 @@ namespace osu.Game.Screens.Menu
             ApplyModTrackAdjustmentsBindable = config.GetBindable<bool>(OsuSetting.ApplyModTrackAdjustments);
             ApplyModTrackAdjustmentsBindable.BindValueChanged(r =>
             {
-                if (Game.isSongSelect == false)
-                {
-                    if (localUserInfo.PlayingState.Value == LocalUserPlayingState.NotPlaying)
-                    {
-                        UpdateApplyModTrackAdjustments();
-                    }
-                }
+                UpdateApplyModTrackAdjustments();
             });
             holdDelay = config.GetBindable<double>(OsuSetting.UIHoldActivationDelay);
             loginDisplayed = statics.GetBindable<bool>(Static.LoginOverlayDisplayed);

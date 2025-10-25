@@ -106,25 +106,12 @@ namespace osu.Game.Screens.Menu
             this.createNextScreen = createNextScreen;
         }
 
-        private Bindable<bool> ApplyModTrackAdjustmentsBindable;
-
-        public void UpdateApplyModTrackAdjustments()
-        {
-            ApplyModTrackAdjustments = ApplyModTrackAdjustmentsBindable.Value;
-            musicController.ApplyModTrackAdjustments = ApplyModTrackAdjustmentsBindable.Value;
-        }
-
         [Resolved]
         private BeatmapManager beatmaps { get; set; }
 
         [BackgroundDependencyLoader]
         private void load(OsuConfigManager config, Framework.Game game, RealmAccess realm, IAPIProvider api)
         {
-            ApplyModTrackAdjustmentsBindable = config.GetBindable<bool>(OsuSetting.ApplyModTrackAdjustments);
-            ApplyModTrackAdjustmentsBindable.BindValueChanged(r =>
-            {
-                UpdateApplyModTrackAdjustments();
-            });
 
             // prevent user from changing beatmap while the intro is still running.
             beatmap = Beatmap.BeginLease(false);

@@ -1093,6 +1093,8 @@ namespace osu.Game.Screens.Play
         {
             base.OnEntering(e);
 
+            Game.isPlaying = true;
+
             if (!LoadedBeatmapSuccessfully)
                 return;
 
@@ -1158,6 +1160,8 @@ namespace osu.Game.Screens.Play
 
         public override void OnSuspending(ScreenTransitionEvent e)
         {
+            Game.isPlaying = false;
+
             screenSuspension?.RemoveAndDisposeImmediately();
 
             fadeOut();
@@ -1166,6 +1170,8 @@ namespace osu.Game.Screens.Play
 
         public override bool OnExiting(ScreenExitEvent e)
         {
+            Game.isPlaying = false;
+
             screenSuspension?.RemoveAndDisposeImmediately();
 
             // Eagerly clean these up as disposal of child components is asynchronous and may leave sounds playing beyond user expectations.
