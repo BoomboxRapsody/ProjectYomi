@@ -104,7 +104,7 @@ namespace osu.Game.Screens.Play.HUD
                 iconsContainer.Add(new ModIcon(mod, showExtendedInformation: showExtendedInformation) { Scale = new Vector2(MOD_ICON_SCALE) });
         }
 
-        private void updateExpansionMode(double duration = 125)
+        private void updateExpansionMode(double duration = 250)
         {
             switch (expansionMode)
             {
@@ -125,13 +125,13 @@ namespace osu.Game.Screens.Play.HUD
             }
         }
 
-        private void expand(double duration = 125)
+        private void expand(double duration = 250)
         {
             if (ExpansionMode != ExpansionMode.AlwaysContracted)
                 iconsContainer.TransformSpacingTo(new Vector2(5, -10), duration, Easing.OutBack);
         }
 
-        private void contract(double duration = 125)
+        private void contract(double duration = 250)
         {
             if (ExpansionMode != ExpansionMode.AlwaysExpanded)
                 iconsContainer.TransformSpacingTo(new Vector2(-25), duration, Easing.OutBack);
