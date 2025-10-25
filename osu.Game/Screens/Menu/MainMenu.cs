@@ -135,9 +135,12 @@ namespace osu.Game.Screens.Menu
             ApplyModTrackAdjustmentsBindable = config.GetBindable<bool>(OsuSetting.ApplyModTrackAdjustments);
             ApplyModTrackAdjustmentsBindable.BindValueChanged(r =>
             {
-                if (localUserInfo.PlayingState.Value == LocalUserPlayingState.NotPlaying)
+                if (Game.isSongSelect == false)
                 {
-                    UpdateApplyModTrackAdjustments();
+                    if (localUserInfo.PlayingState.Value == LocalUserPlayingState.NotPlaying)
+                    {
+                        UpdateApplyModTrackAdjustments();
+                    }
                 }
             });
             holdDelay = config.GetBindable<double>(OsuSetting.UIHoldActivationDelay);
