@@ -122,13 +122,19 @@ namespace osu.Game.Screens.Menu
 
         private Bindable<bool> ApplyModTrackAdjustmentsBindable;
 
+        public void UpdateApplyModTrackAdjustments()
+        {
+            ApplyModTrackAdjustments = ApplyModTrackAdjustmentsBindable.Value;
+            musicController.ApplyModTrackAdjustments = ApplyModTrackAdjustmentsBindable.Value;
+        }
+
         [BackgroundDependencyLoader(true)]
         private void load(BeatmapListingOverlay beatmapListing, SettingsOverlay settings, OsuGame? game, OsuConfigManager config, SessionStatics statics, AudioManager audio)
         {
             ApplyModTrackAdjustmentsBindable = config.GetBindable<bool>(OsuSetting.ApplyModTrackAdjustments);
             ApplyModTrackAdjustmentsBindable.BindValueChanged(r =>
             {
-                ApplyModTrackAdjustments = r.NewValue;
+                UpdateApplyModTrackAdjustments();
             });
             holdDelay = config.GetBindable<double>(OsuSetting.UIHoldActivationDelay);
             loginDisplayed = statics.GetBindable<bool>(Static.LoginOverlayDisplayed);
